@@ -49,7 +49,7 @@ const dubai = new Location('Dubai','11','38','3.7',[],[],0);
 const paris = new Location('Paris','20','38','2.3',[],[],0);
 const lima = new Location('Lima','2','16','4.6',[],[],0);
 
-
+let locations = [seattle,tokyo,dubai,paris,lima];
 
 
 Location.prototype.render =function(){
@@ -77,17 +77,32 @@ Location.prototype.render =function(){
   rowOne.append(cookiesDay);
 };
 
-Location.prototype.getTotal = function(){
+function getTotal(){
+  const tableOne = document.querySelector('table');
+  const tableRow = document.createElement('tr');
+  const tableHeader=document.createElement('th');
+  tableHeader.textContent= 'Hourly Total';
+  tableRow.append(tableHeader);
+
   let totals=0;
   for(let i=0; i<hours.length; i++){
     let hrlyTotals = 0;
-    for(let j= 0; j<location.length; j++){
-      hrlyTotals = hrlyTotals + location[j].getHrlyCookies[i];
-      totals = totals + location[j].getHrlyCookies[i];
-      
+    for(let j= 0; j<locations.length; j++){
+      hrlyTotals = hrlyTotals + locations[j].hrlyCookies[i];
+      totals = totals + locations[j].hrlyCookies[i];
+
     }
+    const tableCell =document.createElement('td');
+    tableCell.textContent = hrlyTotals;
+    tableRow.append(tableCell);
+    tableOne.append(tableRow);
   }
-};
+  const totalCell = document.createElement('td');
+  totalCell.textContent = totals;
+  tableRow.append(totalCell);
+}
+
+
 
 seattle;
 seattle.getHrlyCustomer();
@@ -124,7 +139,7 @@ lima.getDailyCookies();
 lima.render();
 console.log(lima);
 
-
+getTotal();
 
 // // Render List
 // const storeList = document.querySelector('StoreProfile');
