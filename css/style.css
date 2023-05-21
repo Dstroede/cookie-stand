@@ -13,8 +13,11 @@ thead{
 }
 
 header {
-    background-color: forestgreen;
-    color: lightgrey;
+    background-color: darkgreen;
+    color: whitesmoke;
+}
+a{
+    color: white;
 }
 nav h1 {
     font-size: 40px;
@@ -33,6 +36,8 @@ nav h1 {
     align-items: center;
     padding:10px;
     margin: 30px;
+    border: 20px, solid,black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #banners {
@@ -42,7 +47,9 @@ nav h1 {
     align-content: center;
     align-items: center;
     margin: 15px;
-    border: 20px, solid,black;
+    border: 25px, solid,black;
+
+    
 
 }
 article {
@@ -52,7 +59,8 @@ article {
     text-align: center;
     font-size: 20px;
     line-height: 25px;
-   
+    border: 25px, solid,black;
+ 
 
 
 }
@@ -61,13 +69,15 @@ article {
     margin:15px;
     padding: 4px;
     width: 300px;
-    height: 375px;
+    height: 370px;
     font-size: 20px;
     line-height: 25px;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
     background-color: lightblue;
+    border: 25px, black;
+
 
 
 }
@@ -82,7 +92,9 @@ footer {
     align-items: left;
     margin: 15px;
     width: 300px;
-    height: 600px;
+    height: 375px;
+    border: 25px, solid,black;
+   
 }
 /* ----- end of container stylings ----- */
 
@@ -202,4 +214,4 @@ to which the button is associated. */
 
 /* when we focus on the button, the background color changes */
 .slide-btn:focus {
-    background-color: darkgrey;
+    background-color: darkgrey;}
