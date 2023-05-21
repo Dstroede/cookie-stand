@@ -190,33 +190,24 @@ getTotal();
 //     }
 //   }
 // };
-//SLide Show
-let slideIndex = 1;
-showSlides(slideIndex);
+const cookieStandForm = document.querySelector('form');
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let location = event.target.city.value;
+  let min = event.target.min.value;
+  let max = event.target.max.value;
+  let avgCookies = event.target.avgCookies.value;
+
+  userLocation.getHrlyCustomer();
+  userLocation.getHrlyCookies();
+  userLocation.getDailyCookies();
+
+  let userLocation = new Location(location, min, max, avgCookies, this.hrlyCustomer,this.hrlyCookies, this.dailyCookies);
+
+
+  userLocation.render();
 }
-plusSlides;
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-currentSlide;
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slideMerch");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1} 
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none"; 
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block"; 
-  dots[slideIndex-1].className += " active";
-}
-showSlides;
+
+cookieStandForm.addEventListener('submit',handleSubmit);
