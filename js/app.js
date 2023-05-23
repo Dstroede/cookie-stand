@@ -14,14 +14,14 @@
 
 let hours= ['6Am', '7Am','8Am', '9Am', '10Am', '11Am', '12Pm', '1Pm', '2Pm', '3Pm', '4Pm', '5Pm', '6Pm', '7Pm'];
 
-function Location(location, min, max, avgCookies, hrlyCustomer,hrlyCookies, dailyCookies){
+function Location(location, min, max, avgCookies){
   this.location = location;
   this.min = min;
   this.max = max;
   this.avgCookies = avgCookies;
-  this.hrlyCustomer = hrlyCustomer;
-  this.hrlyCookies = hrlyCookies;
-  this.dailyCookies = dailyCookies;
+  this.hrlyCustomer = [];
+  this.hrlyCookies = [];
+  this.dailyCookies = 0;
 }
 
 Location.prototype.getHrlyCustomer = function(){
@@ -37,20 +37,43 @@ Location.prototype.getHrlyCookies = function(){
 };
 
 Location.prototype.getDailyCookies = function(){
-  for (let i = 0; i < hours.length; i++){
-    this.dailyCookies += this.hrlyCookies[i];
+  let dailyCookies = 0;
+  for (let i = 0; i < this.hrlyCookies.length; i++){
+    console.log(typeof(this.hrlyCookies[i]));
+    this.dailyCookies +=  this.hrlyCookies[i];
   }
+  console.log(this.dailyCookies)
 };
 
 
-const seattle = new Location('Seattle','23','65','6.3',[],[],0);
-const tokyo = new Location('Tokyo','3','24','1.2',[],[],0);
-const dubai = new Location('Dubai','11','38','3.7',[],[],0);
-const paris = new Location('Paris','20','38','2.3',[],[],0);
-const lima = new Location('Lima','2','16','4.6',[],[],0);
+const seattle = new Location('Seattle','23','65','6.3');
+const tokyo = new Location('Tokyo','3','24','1.2');
+const dubai = new Location('Dubai','11','38','3.7');
+const paris = new Location('Paris','20','38','2.3');
+const lima = new Location('Lima','2','16','4.6');
 
 let locations = [seattle,tokyo,dubai,paris,lima];
 
+
+const tableOne = document.querySelector('table');
+
+function startTable(){
+  let row = document.createElement('tr');
+  tableOne.appendChild(row);
+  const tableTop = document.createElement ('th');
+  tableTop.textContent = 'Location';
+  row.append(tableTop);
+
+  for(let i=0; i< hours.length; i++){
+    const hourCell  = document.createElement('th');
+    hourCell.textContent = hours[i];
+    row.append(hourCell);
+  }
+  let dT= document.createElement('th');
+  row.appendChild(dT);
+  dT.textContent = 'Daily Total';
+}
+startTable();
 
 Location.prototype.render =function(){
 // creating basic tables
@@ -63,7 +86,7 @@ Location.prototype.render =function(){
   console.log(locationName);
   rowOne.append(locationName);
 
-  let cookieString = '';
+
 
   for(let i=0; i< this.hrlyCookies.length; i++){
     const cookieCell  = document.createElement('td');
@@ -104,40 +127,45 @@ function getTotal(){
 
 
 
-seattle;
-seattle.getHrlyCustomer();
-seattle.getHrlyCookies();
-seattle.getDailyCookies();
-seattle.render();
-console.log(seattle);
+for(let i=0; i<locations.length; i++){
+  locations[i].getHrlyCustomer();
+  locations[i].getHrlyCookies();
+  locations[i].getDailyCookies();
+  locations[i].render();
+}
+// seattle.getHrlyCustomer();
+// seattle.getHrlyCookies();
+// seattle.getDailyCookies();
+// seattle.render();
+// console.log(seattle);
 
-tokyo;
-tokyo.getHrlyCustomer();
-tokyo.getHrlyCookies();
-tokyo.getDailyCookies();
-tokyo.render();
-console.log(tokyo);
 
-dubai;
-dubai.getHrlyCustomer();
-dubai.getHrlyCookies();
-dubai.getDailyCookies();
-dubai.render();
-console.log(dubai);
+// tokyo.getHrlyCustomer();
+// tokyo.getHrlyCookies();
+// tokyo.getDailyCookies();
+// tokyo.render();
+// console.log(tokyo);
 
-paris;
-paris.getHrlyCustomer();
-paris.getHrlyCookies();
-paris.getDailyCookies();
-paris.render();
-console.log(paris);
 
-lima;
-lima.getHrlyCustomer();
-lima.getHrlyCookies();
-lima.getDailyCookies();
-lima.render();
-console.log(lima);
+// dubai.getHrlyCustomer();
+// dubai.getHrlyCookies();
+// dubai.getDailyCookies();
+// dubai.render();
+// console.log(dubai);
+
+
+// paris.getHrlyCustomer();
+// paris.getHrlyCookies();
+// paris.getDailyCookies();
+// paris.render();
+// console.log(paris);
+
+
+// lima.getHrlyCustomer();
+// lima.getHrlyCookies();
+// lima.getDailyCookies();
+// lima.render();
+// console.log(lima);
 
 getTotal();
 
@@ -192,22 +220,40 @@ getTotal();
 // };
 const cookieStandForm = document.querySelector('form');
 
-function handleSubmit(event) {
+cookieStandForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   let location = event.target.city.value;
-  let min = event.target.min.value;
-  let max = event.target.max.value;
-  let avgCookies = event.target.avgCookies.value;
+  console.log(location);
+  let min = parseInt(event.target.min.value);
+  console.log (min);
+  let max = parseInt(event.target.max.value);
+  console.log (max);
+  let avgCookies = parseFloat(event.target.avgCookies.value);
+  console.log (avgCookies);
 
-  userLocation.getHrlyCustomer();
-  userLocation.getHrlyCookies();
-  userLocation.getDailyCookies();
+ 
 
-  let userLocation = new Location(location, min, max, avgCookies, this.hrlyCustomer,this.hrlyCookies, this.dailyCookies);
+  let userLocation = new Location(location, min, max, avgCookies);
+  locations.push(userLocation);
 
 
-  userLocation.render();
-}
 
-cookieStandForm.addEventListener('submit',handleSubmit);
+  function renderSalesReport() {
+    tableOne.innerHTML = '';
+    startTable();
+    for(let i = 0; i< locations.length; i++){
+      locations[i].getHrlyCustomer();
+      locations[i].getHrlyCookies();
+      locations[i].getDailyCookies();
+      locations[i].render();
+    }
+    getTotal();
+  }
+  renderSalesReport();
+
+});
+console.log(locations);
+
+
+

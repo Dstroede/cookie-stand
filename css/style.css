@@ -215,3 +215,13 @@ to which the button is associated. */
 /* when we focus on the button, the background color changes */
 .slide-btn:focus {
     background-color: darkgrey;}
+
+    fieldset{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content:flex-start;
+        align-items: center;
+        background-color: lightblue;
+        height:200px;
+    }
