@@ -164,16 +164,14 @@ footer {
     10% { left: 0; }
     30% { left: -100%; }
     40% { left: -100%; }
-
-    60% { left: -100%; }
+    65% { left: -100%; }
     70% { left: -100%; }
-
     90% { left: 0%; }
 }
 /* ----- end of slideshow stylings ----- */
 
 /* ----- carousel control buttons stylings ----- */
-.slide-btn {
+.slide-button {
     background-color: #bbb;
     border-radius: 30%;
     border: .2rem solid #d38800;
@@ -193,27 +191,34 @@ footer {
 the buttons places one over the other. 
 So, we have to place them individually
 at their correct positions. */
-.slide-btn-1 {
-    left: 40%;
+.slide-button-1 {
+    left: 42%;
 }
-.slide-btn-2 {
+.slide-button-2 {
     left: 55%;
+}
+.slide-button-3 {
+    left: 67%;
 }
 
 /* When we focus on the particular button, 
 the animation stops to that particular image 
 to which the button is associated. */
-.slide-btn-1:focus~.slideshow-wrapper {
+.slide-button-1:focus~.slideshow-wrapper {
     animation: none;
     left: 0;
 }
-.slide-btn-2:focus~.slideshow-wrapper {
+.slide-button-2:focus~.slideshow-wrapper {
     animation: none;
     left: -100%;
 }
+.slide-button-3:focus~.slideshow-wrapper {
+    animation: none;
+    left: -200%;
+}
 
 /* when we focus on the button, the background color changes */
-.slide-btn:focus {
+.slide-button:focus {
     background-color: darkgrey;}
 
     fieldset{
