@@ -141,7 +141,7 @@ footer {
     /* We give it width as 400% because we are making a 
        4 image carousel. If you want to make for example, 
        5 images carousel, then give width as 500%. */
-    width: 300%;
+    width: 400%;
     height: 100%;
     position: relative;
     /* you can change the animation settings from below */
@@ -165,9 +165,12 @@ footer {
     10% { left: 0; }
     30% { left: -100%; }
     40% { left: -100%; }
-    65% { left: -100%; }
+    50% { left: -200%; }
+    60% { left: -200%; }
     70% { left: -100%; }
+    80% { left: -100%; }
     90% { left: 0%; }
+    100% { left: 0%; }
 }
 /* ----- end of slideshow stylings ----- */
 
@@ -201,6 +204,9 @@ at their correct positions. */
 .slide-button-3 {
     left: 67%;
 }
+.slide-button-4 {
+    left: 80%;
+}
 
 /* When we focus on the particular button, 
 the animation stops to that particular image 
@@ -216,6 +222,10 @@ to which the button is associated. */
 .slide-button-3:focus~.slideshow-wrapper {
     animation: none;
     left: -200%;
+}
+.slide-button-4:focus~.slideshow-wrapper {
+    animation: none;
+    left: -300%;
 }
 
 /* when we focus on the button, the background color changes */
