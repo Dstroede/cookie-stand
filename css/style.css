@@ -8,6 +8,7 @@ table,th, td {
     margin-right: auto;
     text-align: center;
     font-family: Georgia;
+    color: rgb(0, 5, 46);
     margin-top: 10px;
     margin-bottom:10px;
 }
@@ -29,6 +30,7 @@ body{
     margin:auto;
     background-color:  #e7e5e0;
     font-family: sans-serif;
+    color: black;
 }
 
 .hero-image {
@@ -64,6 +66,7 @@ a{
 }
 nav h1 {
     font-size: 45px;
+    font-family: 'Lobster', cursive;
 }
 #logo img {
     width: 200px;
@@ -303,9 +306,7 @@ footer{
     margin: 20px;
   }
   form{
-    vertical-align: top;
-    display: flex;
-    flex-direction: column;
+
     text-align: center;
     width: 70%;
     margin-left: auto;
