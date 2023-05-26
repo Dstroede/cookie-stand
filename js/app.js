@@ -83,7 +83,7 @@ Location.prototype.render = function () {
 
   let rowOne = document.createElement('tr');
   tableOne.append(rowOne);
-  const locationName = document.createElement('td');
+  const locationName = document.createElement('th');
   locationName.textContent = this.location;
   console.log(locationName);
   rowOne.append(locationName);

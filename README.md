@@ -10,7 +10,7 @@ Learn more about JavaScript/CSS/ and HTML
 
 ## Build Status
 
-Pending...
+Complete
 
 
 ## Tech/Framework Used
@@ -23,13 +23,14 @@ Accessibility score 100
 ![Accessibility Score](img/AccessibilityScore.png)
 
 ## How to use?
-You can navigate the website by click on the different Nav elements at the top of the page
+You can navigate the website by click on the different Nav elements at the top of the page.
+there is a table that can be added to by simply filling out the form beneath it.
 
 ## Credits
-
+Credits to Code Fellows for providing the pictures and the idea of salmon cookies.
 
 ## License
 MIT © Drew Stroede
 
 
-## Paired Programming
+
